@@ -1,0 +1,160 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" version="29.2.1">
+  <diagram id="DW" name="DataWarehouse">
+    <mxGraphModel dx="11707" dy="6100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1400" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="DimDate" parent="1" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="DimDate&#xa;DateKey (PK)&#xa;FullDate&#xa;Day&#xa;Month&#xa;Year&#xa;Quarter&#xa;WeekOfYear&#xa;IsWeekend" vertex="1">
+          <mxGeometry height="170" width="220" x="1300" y="-250" as="geometry" />
+        </mxCell>
+        <mxCell id="DimCustomer" parent="1" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="DimCustomer&#xa;CustomerKey (PK)&#xa;CustomerId_NK&#xa;FirstName&#xa;LastName&#xa;Email&#xa;DefaultCity&#xa;SCD2: EffectiveFrom/To, IsCurrent" vertex="1">
+          <mxGeometry height="170" width="240" x="620" y="-250" as="geometry" />
+        </mxCell>
+        <mxCell id="DimMerchant" parent="1" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="DimMerchant&#xa;MerchantKey (PK)&#xa;MerchantId_NK&#xa;CompanyName" vertex="1">
+          <mxGeometry height="120" width="220" x="970" y="-250" as="geometry" />
+        </mxCell>
+        <mxCell id="DimStore" parent="1" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="DimStore&#xa;StoreKey (PK)&#xa;StoreId_NK&#xa;StoreName&#xa;Domain&#xa;MerchantKey (FK)" vertex="1">
+          <mxGeometry height="150" width="240" x="250" y="-240" as="geometry" />
+        </mxCell>
+        <mxCell id="DimProduct" parent="1" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="DimProduct&#xa;ProductKey (PK)&#xa;ProductId_NK&#xa;SKU&#xa;Name&#xa;BasePrice&#xa;SupplierPrice&#xa;SCD2: EffectiveFrom/To, IsCurrent" vertex="1">
+          <mxGeometry height="170" width="260" x="1240" y="1770" as="geometry" />
+        </mxCell>
+        <mxCell id="DimCategory" parent="1" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="DimCategory&#xa;CategoryKey (PK)&#xa;CategoryId_NK&#xa;StoreKey (FK)&#xa;Name&#xa;Slug" vertex="1">
+          <mxGeometry height="140" width="240" x="330" y="1740" as="geometry" />
+        </mxCell>
+        <mxCell id="BridgeProductCategory" parent="1" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" value="BridgeProductCategory&#xa;ProductKey (FK)&#xa;CategoryKey (FK)&#xa;PK(ProductKey, CategoryKey)" vertex="1">
+          <mxGeometry height="120" width="260" x="320" y="1350" as="geometry" />
+        </mxCell>
+        <mxCell id="DimGeography" parent="1" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="DimGeography&#xa;GeographyKey (PK)&#xa;City&#xa;Country&#xa;Region" vertex="1">
+          <mxGeometry height="120" width="220" x="-630" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="DimPaymentMethod" parent="1" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="DimPaymentMethod&#xa;PaymentMethodKey (PK)&#xa;MethodName (UNQ)" vertex="1">
+          <mxGeometry height="110" width="220" x="-140" y="970" as="geometry" />
+        </mxCell>
+        <mxCell id="DimOrderStatus" parent="1" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="DimOrderStatus&#xa;OrderStatusKey (PK)&#xa;StatusCode (UNQ)&#xa;StatusGroup" vertex="1">
+          <mxGeometry height="120" width="220" x="-630" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="DimCarrier" parent="1" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="DimCarrier&#xa;CarrierKey (PK)&#xa;CarrierName (UNQ)" vertex="1">
+          <mxGeometry height="100" width="220" x="2200" y="445" as="geometry" />
+        </mxCell>
+        <mxCell id="DimShipmentStatus" parent="1" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="DimShipmentStatus&#xa;ShipmentStatusKey (PK)&#xa;StatusCode (UNQ)&#xa;StatusGroup" vertex="1">
+          <mxGeometry height="120" width="240" x="1780" y="740" as="geometry" />
+        </mxCell>
+        <mxCell id="DimReviewRatingBand" parent="1" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="DimReviewRatingBand&#xa;RatingBandKey (PK)&#xa;RatingValue (UNQ, 1..5)&#xa;BandName" vertex="1">
+          <mxGeometry height="120" width="260" x="1970" y="1370" as="geometry" />
+        </mxCell>
+        <mxCell id="FactOrder" parent="1" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#ffcccc;strokeColor=#b85450;fontSize=12;" value="FactOrder&#xa;OrderKey (PK)&#xa;OrderId_NK&#xa;OrderDateKey (FK DimDate)&#xa;CustomerKey&#xa;StoreKey&#xa;MerchantKey&#xa;GeographyKey&#xa;OrderStatusKey&#xa;TotalAmount&#xa;OrderCount=1" vertex="1">
+          <mxGeometry height="235" width="300" x="-160" y="365" as="geometry" />
+        </mxCell>
+        <mxCell id="FactOrderLine" parent="1" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#ffcccc;strokeColor=#b85450;fontSize=12;" value="FactOrderLine&#xa;OrderLineKey (PK)&#xa;OrderKey (FK FactOrder)&#xa;OrderId_NK&#xa;OrderDateKey&#xa;ProductKey&#xa;CustomerKey&#xa;StoreKey&#xa;MerchantKey&#xa;Quantity&#xa;UnitPrice&#xa;ExtendedAmount=Quantity*UnitPrice" vertex="1">
+          <mxGeometry height="220" width="300" x="890" y="1300" as="geometry" />
+        </mxCell>
+        <mxCell id="FactPayment" parent="1" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#ffcccc;strokeColor=#b85450;fontSize=12;" value="FactPayment&#xa;PaymentKey (PK)&#xa;PaymentId_NK&#xa;PaymentDateKey&#xa;OrderKey&#xa;CustomerKey&#xa;StoreKey&#xa;MerchantKey&#xa;PaymentMethodKey&#xa;Amount&#xa;PaymentStatus" vertex="1">
+          <mxGeometry height="200" width="300" x="230" y="920" as="geometry" />
+        </mxCell>
+        <mxCell id="FactShipment" parent="1" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#ffcccc;strokeColor=#b85450;fontSize=12;" value="FactShipment&#xa;ShipmentKey (PK)&#xa;ShipmentId_NK&#xa;OrderKey (FK FactOrder)&#xa;ShipDateKey&#xa;DeliveryDateKey&#xa;StoreKey&#xa;MerchantKey&#xa;CustomerKey&#xa;CarrierKey&#xa;ShipmentStatusKey&#xa;TrackingNumber&#xa;ShippedFlag&#xa;DeliveredFlag&#xa;LeadTimeDays&#xa;DeliveryWithinSLAFlag&#xa;ShipmentCount=1" vertex="1">
+          <mxGeometry height="260" width="360" x="1720" y="365" as="geometry" />
+        </mxCell>
+        <mxCell id="FactReview" parent="1" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#ffcccc;strokeColor=#b85450;fontSize=12;" value="FactReview&#xa;ReviewKey (PK)&#xa;ReviewId_NK&#xa;ReviewDateKey&#xa;ProductKey&#xa;CustomerKey&#xa;StoreKey&#xa;MerchantKey&#xa;RatingBandKey (opt)&#xa;Rating (1..5)&#xa;ReviewCount=1&#xa;HasCommentFlag&#xa;CommentLength" vertex="1">
+          <mxGeometry height="240" width="360" x="1490" y="1310" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="FactOrder" target="DimDate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="FactOrder" target="DimCustomer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="FactOrder" target="DimStore">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="FactOrder" target="DimMerchant">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="FactOrder" target="DimGeography">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="FactOrder" target="DimOrderStatus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="FactOrderLine" target="DimDate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="FactOrderLine" target="DimProduct">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="FactOrderLine" target="DimStore">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="FactOrderLine" target="DimMerchant">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="FactOrderLine" target="DimCustomer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="FactOrderLine" target="BridgeProductCategory">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="BridgeProductCategory" target="DimCategory">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="FactPayment" target="DimDate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="1" source="FactPayment" target="DimPaymentMethod">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" edge="1" parent="1" source="FactPayment" target="DimStore">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" edge="1" parent="1" source="FactPayment" target="DimMerchant">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" edge="1" parent="1" source="FactPayment" target="DimCustomer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e19" edge="1" parent="1" source="FactPayment" target="FactOrder">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e20" edge="1" parent="1" source="FactShipment" target="DimDate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e21" edge="1" parent="1" source="FactShipment" target="DimCarrier">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e22" edge="1" parent="1" source="FactShipment" target="DimShipmentStatus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e23" edge="1" parent="1" source="FactShipment" target="FactOrder">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e24" edge="1" parent="1" source="FactShipment" target="DimStore">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e25" edge="1" parent="1" source="FactShipment" target="DimMerchant">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e26" edge="1" parent="1" source="FactShipment" target="DimCustomer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e27" edge="1" parent="1" source="FactReview" target="DimDate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e28" edge="1" parent="1" source="FactReview" target="DimProduct">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e29" edge="1" parent="1" source="FactReview" target="DimCustomer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e30" edge="1" parent="1" source="FactReview" target="DimStore">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e31" edge="1" parent="1" source="FactReview" target="DimMerchant">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e32" edge="1" parent="1" source="FactReview" target="DimReviewRatingBand">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
